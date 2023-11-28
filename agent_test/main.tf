@@ -18,3 +18,9 @@ resource "null_resource" "all_vars" {
     command = "env"
   }
 }
+
+resource "null_resource" "ls" {
+  provisioner "local-exec" {
+    command = "ls -R"
+  }
+}
