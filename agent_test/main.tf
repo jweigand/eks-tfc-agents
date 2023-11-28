@@ -19,8 +19,8 @@ resource "null_resource" "all_vars" {
   }
 }
 
-resource "null_resource" "ls_home" {
+resource "null_resource" "ls_hooks" {
   provisioner "local-exec" {
-    command = "ls -R /home/tfc-agent/"
+    command = "ls -R /home/tfc-agent/.tfc-agent"
   }
 }
