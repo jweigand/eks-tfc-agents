@@ -12,3 +12,9 @@ resource "null_resource" "read_vars" {
     command = "echo $AWS_ROLE_ARN $AWS_WEB_IDENTITY_TOKEN_FILE"
   }
 }
+
+resource "null_resource" "all_vars" {
+  provisioner "local-exec" {
+    command = "env"
+  }
+}
