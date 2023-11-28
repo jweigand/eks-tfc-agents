@@ -67,16 +67,6 @@ module "eks" {
   }
 
   eks_managed_node_groups = {
-    # Default node group - as provided by AWS EKS
-    default_node_group = {
-      # By default, the module creates a launch template to ensure tags are propagated to instances, etc.,
-      # so we need to disable it to use the default template provided by the AWS EKS managed node group service
-      use_custom_launch_template = false
-
-      disk_size = 50
-
-    }
-
 
     complete = {
       name            = "complete-eks-mng"
@@ -156,27 +146,6 @@ module "eks" {
       iam_role_additional_policies = {
         AmazonEC2ContainerRegistryReadOnly = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
         additional                         = aws_iam_policy.node_additional.arn
-      }
-
-      schedules = {
-        scale-up = {
-          min_size     = 2
-          max_size     = "-1" # Retains current max size
-          desired_size = 2
-          start_time   = "2023-03-05T00:00:00Z"
-          end_time     = "2024-03-05T00:00:00Z"
-          time_zone    = "Etc/GMT+0"
-          recurrence   = "0 0 * * *"
-        },
-        scale-down = {
-          min_size     = 0
-          max_size     = "-1" # Retains current max size
-          desired_size = 0
-          start_time   = "2023-03-05T12:00:00Z"
-          end_time     = "2024-03-05T12:00:00Z"
-          time_zone    = "Etc/GMT+0"
-          recurrence   = "0 12 * * *"
-        }
       }
 
       tags = {
