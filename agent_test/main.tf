@@ -21,6 +21,6 @@ resource "null_resource" "all_vars" {
 
 resource "null_resource" "ls" {
   provisioner "local-exec" {
-    command = "ls -R"
+    command = "ls -R /home/tfc-agent/"
   }
 }
