@@ -53,7 +53,7 @@ module "eks" {
 
   manage_aws_auth_configmap = true
 
-    aws_auth_roles = [
+  aws_auth_roles = [
     {
       rolearn  = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/aws_john.weigand_test-developer"
       username = "aws_john.weigand_test-developer"

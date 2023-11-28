@@ -3,7 +3,7 @@ terraform {
 
   cloud {
     organization = "weigand-hcp"
-    hostname     = "app.terraform.io" 
+    hostname     = "app.terraform.io"
 
     workspaces {
       name = "eks-demo"

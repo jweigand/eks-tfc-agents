@@ -15,5 +15,5 @@ module "iam_eks_role" {
 }
 
 data "aws_iam_policy" "admin" {
-  name        = "AdministratorAccess"
+  name = "AdministratorAccess"
 }
