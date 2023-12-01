@@ -5,7 +5,7 @@ echo outputting env vars...
 env
 
 echo getting clientID secret
-export ARM_CLIENT_ID=(aws secretsmanager get-secret-value --secret-id demo --query SecretString --output text | jq -r '."clientId"')
+export ARM_CLIENT_ID=$(aws secretsmanager get-secret-value --secret-id demo --query SecretString --output text | jq -r '."clientId"')
 
 echo $ARM_CLIENT_ID
 
