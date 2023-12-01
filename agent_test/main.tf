@@ -13,6 +13,7 @@ resource "null_resource" "read_vars" {
   }
 }
 
+/*
 resource "null_resource" "all_vars" {
   provisioner "local-exec" {
     command = "env"
@@ -24,3 +25,4 @@ resource "null_resource" "ls_hooks" {
     command = "ls -R /home/tfc-agent/.tfc-agent"
   }
 }
+*/
