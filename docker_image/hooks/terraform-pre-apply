@@ -4,16 +4,21 @@ echo pre-apply hooks
 echo outputting env vars...
 env
 
-echo writing env vars to tfc_agent_env
-echo AWS_WEB_IDENTITY_TOKEN_FILE=$AWS_WEB_IDENTITY_TOKEN_FILE >> $TFC_AGENT_ENV
-echo AWS_ROLE_ARN=$AWS_ROLE_ARN >> $TFC_AGENT_ENV
+echo getting clientID secret
+export ARM_CLIENT_ID=(aws secretsmanager get-secret-value --secret-id demo --query SecretString --output text | jq -r '."clientId"')
 
-echo outputting env vars...
-env
+echo $ARM_CLIENT_ID
 
-echo exporting env vars
-export AWS_WEB_IDENTITY_TOKEN_FILE=$AWS_WEB_IDENTITY_TOKEN_FILE
-export AWS_ROLE_ARN=$AWS_ROLE_ARN
+#echo writing env vars to tfc_agent_env
+#echo AWS_WEB_IDENTITY_TOKEN_FILE=$AWS_WEB_IDENTITY_TOKEN_FILE >> $TFC_AGENT_ENV
+#echo AWS_ROLE_ARN=$AWS_ROLE_ARN >> $TFC_AGENT_ENV
 
-echo outputting env vars...
-env
+#echo outputting env vars...
+#env
+
+#echo exporting env vars
+#export AWS_WEB_IDENTITY_TOKEN_FILE=$AWS_WEB_IDENTITY_TOKEN_FILE
+#export AWS_ROLE_ARN=$AWS_ROLE_ARN
+
+#echo outputting env vars...
+#env
