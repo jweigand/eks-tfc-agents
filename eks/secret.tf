@@ -11,8 +11,8 @@ resource "aws_secretsmanager_secret_version" "demo" {
 
 variable "secret" {
   default = {
-    clientId = "this is the client ID value"
-    clientSecret = "this is the client Secret value"
+    clientId = "this_is_the_client_ID_value"
+    clientSecret = "this_is_the_client_Secret_value"
   }
 
   type = map(string)

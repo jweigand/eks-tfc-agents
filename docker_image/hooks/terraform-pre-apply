@@ -1,10 +1,15 @@
 #!/bin/sh
 
-echo show hook identity
+echo show initial hook identity
 aws sts get-caller-identity
 
+export AWS_ROLE_ARN=arn:aws:iam::$(aws sts get-caller-identity | jq -r '."Account"'):role/tfc-agent #role name is hardcoded here
+export AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/token
+
+echo show modified hook identity
+
 echo getting clientID secret
-export ARM_CLIENT_ID=$(aws secretsmanager get-secret-value --secret-id demo --query SecretString --output text | jq -r '."clientId"')
+export ARM_CLIENT_ID="$(aws secretsmanager get-secret-value --secret-id demo --query SecretString --output text | jq -r '."clientId"')"
 
 echo $ARM_CLIENT_ID
 
